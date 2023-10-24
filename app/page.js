@@ -9,7 +9,7 @@ const [metaMask, hooks] = initializeConnector((actions) => new MetaMask({ action
 const { useChainId, useAccounts, useIsActivating, useIsActive, useProvider } = hooks
 const contractChain = 11155111
 const contractAddress = '0x86c6ea21110b777c3af59199880291b602515578'
-const page = () => {
+const Page = () => {
   const chainId = useChainId()
   const accounts = useAccounts()
   const isActive = useIsActive()
@@ -45,4 +45,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
