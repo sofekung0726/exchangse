@@ -5,19 +5,26 @@
   
 }
 .card{
-  margin-top: auto;
+  /* margin-top: auto;
   align-items: center;
   width: 15cm;
   max-width: 400px;
-  padding: 20px;
+  padding: 20px;  
   border-radius: 8px;
-  box-shadow: 0 5px 5px;
+
   background-color: aliceblue;
-  
- 
+   */
+   background-color: rgb(255, 255, 255);
+   border-radius: 10px;
+   box-shadow: 0 5px 5px;
+   max-width: 400px;
+  padding: 20px;  
+  border-radius: 8px;
 }
 .container{
-  padding: auto;
+
+  display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  
 }
