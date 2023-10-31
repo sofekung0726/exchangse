@@ -1,9 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { initializeConnector } from '@web3-react/core'
-import { MetaMask } from '@web3-react/metamask'
-import { ethers } from 'ethers'
-import { formatEther, parseUnits } from '@ethersproject/units'
+import { MetaMask } from '@web3-react/metamask' 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import Page from '@/app/page';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 const [metaMask, hooks] = initializeConnector((actions) => new MetaMask({ actions }))
@@ -50,7 +47,7 @@ const contractAddress = '0x86c6ea21110b777c3af59199880291b602515578'
 
                     {isActive ?
                         (<Stack direction="row" spacing={1}>
-                        <Chip label={ accounts} variant="outlined" />
+                        <Chip label={ accounts[0]} variant="outlined" />
                             <Button color="inherit" onClick={handleDisconnect}>  Disconnect </Button></Stack>
                         ) : (
                             

@@ -1,8 +1,10 @@
 * {
-  
-  
   font-family: 'Playpen Sans', cursive;
-  
+}
+body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 .card{
   /* margin-top: auto;
@@ -17,10 +19,11 @@
    background-color: rgb(255, 255, 255);
    border-radius: 10px;
    box-shadow: 0 5px 5px;
-   max-width: 400px;
+   max-width: 500px;
   padding: 20px;  
   border-radius: 8px;
-}
+  margin-top: 80px;
+} 
 .container{
 
   display: flex;
