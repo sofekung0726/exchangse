@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 
 const Card = ({ isActive, accounts, sValue, balance ,handleSetSValue,handleBuy}) => {
     const [metaMask, hooks] = initializeConnector((actions) => new MetaMask({ actions }))
-
+    const [isLoading,setIsLoading] = useState(false)
     const contractChain = 11155111
     const contractAddress = '0x86c6ea21110b777c3af59199880291b602515578'
 
@@ -53,9 +53,13 @@ const Card = ({ isActive, accounts, sValue, balance ,handleSetSValue,handleBuy})
                     p:'2ch',
                     
                 }}>
-                    <Button variant="contained" sx={{
+                    <Button variant="contained"   sx={{
                         width:'50ch'
-                    }}onClick={handleBuy}>Contained</Button>
+                    }}onClick={handleBuy}  disabled={isLoading} >{isLoading ?"Loading":"Buy SToken"}</Button>
+                    
+
+                    
+
                 </Stack>
             </div>
         </div>

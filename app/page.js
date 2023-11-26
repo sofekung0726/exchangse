@@ -30,19 +30,20 @@ const Page = () => {
   }, [])
   // useState is 0  1  1 is method to prescribed 0
   const [balance, setBalance] = useState("");
+  const fetchBalance = async () => {
+    const signer = provider.getSigner();
+    const smartContract = new ethers.Contract(contractAddress, abi, signer)
+    const myBalance = await smartContract.balanceOf(accounts[0]);
+    console.log(formatEther(myBalance));
+    setBalance(formatEther(myBalance));
+  }
   useEffect(() => {
-    const fetchBalance = async () => {
-      const signer = provider.getSigner();
-      const smartContract = new ethers.Contract(contractAddress, abi, signer)
-      const myBalance = await smartContract.balanceOf(accounts[0]);
-      console.log(formatEther(myBalance));
-      setBalance(formatEther(myBalance));
-    }
+    
     if(isActive){
       fetchBalance();
     }
-  },[isActive])
-  
+  },[isActive,balance])
+  const [isLoading,setIsLoading] = useState(false)
   const [sValue , setSValue ] = useState(0);
   const handleSetSValue = event => {
     setSValue(event.target.value);
@@ -58,7 +59,13 @@ const Page = () => {
     const tx = await smartContract.buy({
       value:buyValue.toString()
     });
-    
+    smartContract.on("Transfer",(from,to,tokens)=>{
+      console.log(from,to,tokens,tx);
+      setIsLoading(false);
+      setSValue(0)
+      fetchBalance();
+    })
+
   }catch(err){
     console.log(err);
   }
@@ -79,7 +86,8 @@ const Page = () => {
       <Navbar accounts={accounts} chainId={chainId} isActive={isActive} provider={provider}
         handleConnect={handleConnect} handleDisconnect={handleDisconnect} />
         
-      <Card accounts={accounts} chainId={chainId} isActive={isActive} provider={provider} balance={balance} sValue ={sValue} handleBuy={handleBuy} handleSetSValue={handleSetSValue}/>
+      <Card accounts={accounts} chainId={chainId} isActive={isActive} provider={provider} balance={balance}
+       sValue ={sValue} handleBuy={handleBuy} handleSetSValue={handleSetSValue} />
     </div>
   )
 }
