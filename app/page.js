@@ -87,7 +87,7 @@ const Page = () => {
         handleConnect={handleConnect} handleDisconnect={handleDisconnect} />
         
       <Card accounts={accounts} chainId={chainId} isActive={isActive} provider={provider} balance={balance}
-       sValue ={sValue} handleBuy={handleBuy} handleSetSValue={handleSetSValue} />
+       sValue ={sValue} handleBuy={handleBuy} handleSetSValue={handleSetSValue} isLoading={isLoading}/>
     </div>
   )
 }
