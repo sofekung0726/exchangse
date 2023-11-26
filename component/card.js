@@ -54,7 +54,7 @@ const Card = ({ isActive, accounts, sValue, balance ,handleSetSValue,handleBuy ,
                 }}>
                     <Button variant="contained"   sx={{
                         width:'50ch'
-                    }}onClick={handleBuy}  disabled={isLoading} >{isLoading ?"Loading":"Buy SToken"}</Button>
+                    }}onClick={handleBuy}   >{isLoading ?"Loading":"Buy SToken"}</Button>
                 </Stack>
             </div>
         </div>

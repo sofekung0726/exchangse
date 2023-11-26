@@ -56,6 +56,7 @@ const Page = () => {
     const signer = provider.getSigner();
     const smartContract = new ethers.Contract(contractAddress, abi, signer)
     const buyValue = parseUnits(sValue.toString(),"ether")
+    setIsLoading(true);
     const tx = await smartContract.buy({
       value:buyValue.toString()
     });
